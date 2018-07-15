@@ -183,6 +183,9 @@ public class Server {
   @SerializedName("uuid")
   private UUID uuid = null;
 
+  @SerializedName("user_data")
+  private String userData = null;
+
   /**
    * The model of the server&#39;s video interface.
    */
@@ -793,6 +796,18 @@ public class Server {
     return this;
   }
 
+  @ApiModelProperty()
+  public String getUserData() { return userData; }
+
+  public void setUserData(String userData) {this.userData = userData; }
+
+  public Server userData(String userData) {
+    this.userData = userData;
+    return this;
+  }
+
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -826,12 +841,13 @@ public class Server {
         Objects.equals(this.vncPassword, server.vncPassword) &&
         Objects.equals(this.vncPort, server.vncPort) &&
         Objects.equals(this.zone, server.zone) &&
-        Objects.equals(this.passwordDelivery, server.passwordDelivery);
+        Objects.equals(this.passwordDelivery, server.passwordDelivery) &&
+        Objects.equals(this.userData, server.userData);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(bootOrder, coreNumber, firewall, host, hostname, ipAddresses, license, memoryAmount, nicModel, plan, planIpv4Bytes, planIpv6Bytes, state, storageDevices, tags, timezone, title, uuid, videoModel, vnc, vncHost, vncPassword, vncPort, zone, passwordDelivery);
+    return Objects.hash(bootOrder, coreNumber, firewall, host, hostname, ipAddresses, license, memoryAmount, nicModel, plan, planIpv4Bytes, planIpv6Bytes, state, storageDevices, tags, timezone, title, uuid, videoModel, vnc, vncHost, vncPassword, vncPort, zone, passwordDelivery, userData);
   }
 
 
@@ -865,6 +881,7 @@ public class Server {
     sb.append("    vncPort: ").append(toIndentedString(vncPort)).append("\n");
     sb.append("    zone: ").append(toIndentedString(zone)).append("\n");
     sb.append("    passwordDelivery:: ").append(toIndentedString(passwordDelivery)).append("\n");
+    sb.append("    userData:: ").append(toIndentedString(userData)).append("\n");
     sb.append("}");
     return sb.toString();
   }
